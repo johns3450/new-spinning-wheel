@@ -152,6 +152,10 @@ function tickTicker() {
 
 spinButton.addEventListener('click', spinWheel);
 wheel.addEventListener('click', spinWheel);
+// ✅ Also allow tap on mobile
+wheel.addEventListener('touchstart', spinWheel, { passive: true });
+spinButton.addEventListener('touchstart', spinWheel, { passive: true });
+
 claimPrize.addEventListener('click', () => {
   window.location.href = "https://freespinking.com"; // Replace with your desired URL
 });
