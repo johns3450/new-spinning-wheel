@@ -23,6 +23,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  max-width: 100vw; /* Prevent content from expanding past viewport width */
+  overflow-x: hidden; /* Disable horizontal scrolling */
   font-family: Arial, sans-serif;
   color: #fff;
   margin: 0;
@@ -126,7 +128,7 @@ background-size: cover;
 /* Exclude the loading screen from the fade-in effect */
 body.loading :not(#loading-screen) {
   opacity: 0.5; /* Reduce visibility for all elements except the loader */
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 /* Ensure the loader appears fully visible immediately */
@@ -139,18 +141,50 @@ body.loading #loading-screen {
 body.loading .bg-animated-gradient,
 body.loading .bg-animated-gradient-2,
 body.loading .line,
-body.loading #loading-screen video {
+body.loading .loader {
   opacity: 1 !important; /* Keep fully visible */
 }
 
-/* Loader Animation */
-dotlottie-player, #loading-screen video {
+/* Main loader container */
+.loader {
+  position: relative;
+  width: 100px; /* Adjust as needed */
+  height: 100px;
+}
+
+/* Outer spinner: solid color */
+.outer-spinner {
+  width: 100%;
+  height: 100%;
+  border: 8px solid #003050;         /* solid color */
+  border-top: 8px solid transparent;  /* creates the gap */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Inner spinner: 50% opacity */
+.inner-spinner {
   position: absolute;
-  top: 260px; /* Move down slightly */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px !important;
-  height: 200px !important;
+  top: 25%;  /* centers it within the outer spinner */
+  left: 25%;
+  width: 50px;  /* 50% of 100px */
+  height: 50px;
+  border: 6px solid rgba(52, 152, 219, 0.5); /* same color, 50% opacity */
+  border-top: 6px solid transparent;
+  border-radius: 50%;
+  animation: spinReverse 1.5s linear infinite;
+}
+
+/* Keyframe for outer spinner (clockwise) */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Keyframe for inner spinner (counter-clockwise) */
+@keyframes spinReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
 }
 
 /* When the loading screen is hidden, restore full opacity with fade effect */
@@ -162,9 +196,8 @@ body:not(.loading) * {
 /* Optional: Fade-out rule for the loader when hiding */
 #loading-screen.hidden {
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
-
 
 .game-unit-container {
   display: flex;
@@ -581,7 +614,7 @@ text-transform: uppercase;
   font-size: 18px;
   font-weight: bold;
   color: #ffffff;
-  -webkit-text-stroke: 0.5px #010c00;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 1), 0px 0px 10px rgba(255, 255, 255, 0.4);
   background: radial-gradient(circle, #c80b0b, #b33d30);
   border: none;
   cursor: pointer;
@@ -686,3 +719,8 @@ transform-origin: right;
 .left-column .line-1 { top: -100px; transform: rotate(30deg); } /* Horizontal */
 .left-column .line-2 { top: 0px; transform: rotate(0deg); } /* 300° */
 .left-column .line-3 { top: 100px; transform: rotate(-30deg); } /* 240° */
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}

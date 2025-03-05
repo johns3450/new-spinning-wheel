@@ -16,7 +16,8 @@ function disableClick(event) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const loadingScreen = document.getElementById("loading-screen");
-  const loadingIcon = document.querySelector("#loading-screen video, dotlottie-player");
+  // Swapped out the video/dotlottie-player loader for the new CSS loader with class "loader"
+  const loadingIcon = document.querySelector("#loading-screen .loader");
 
   // Add "loading" class to the body when the page starts loading
   document.body.classList.add("loading");
