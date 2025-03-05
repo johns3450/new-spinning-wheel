@@ -21,6 +21,7 @@ html, body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden !important; /* Forces disabling horizontal scroll */
+  position: relative;
 }
 
 /* Body & Container */
@@ -724,8 +725,3 @@ transform-origin: right;
 .left-column .line-1 { top: -100px; transform: rotate(30deg); } /* Horizontal */
 .left-column .line-2 { top: 0px; transform: rotate(0deg); } /* 300° */
 .left-column .line-3 { top: 100px; transform: rotate(-30deg); } /* 240° */
-
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
