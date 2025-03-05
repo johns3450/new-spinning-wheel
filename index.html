@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>3D Spinning Wheel</title>
   
-    <!-- Preload the actual font file -->
     <link rel="preload" href="https://fonts.gstatic.com/s/luckiestguy/v20/_gP_1RrxsjcxVyin9l9n_j2RStR3qDpraXJ5.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   
     <link rel="stylesheet" href="style.css" />
@@ -44,11 +43,9 @@
           }
         </style>
   
-        <!-- Adjusted Path to Fit Larger Text -->
         <path id="textCurve" d="M-280,110 A420,380 0 0,1 280,110" fill="none"/>
       </defs>
   
-      <!-- Increased Font Size & Stroke for Visibility -->
       <text class="segment-text" font-size="110" fill="#ffffff" stroke="#15410a" stroke-width="4">
         <textPath xlink:href="#textCurve" startOffset="50%" text-anchor="middle">
           SPIN TO WIN
@@ -61,17 +58,11 @@
   <img src="segment-2.svg" class="segment-shape-2" alt="Segment Shape 2">
 </div>
   <div class="game-container">
-    <!-- Wheel container with perspective -->
     <div class="wheel-container">
-      <!-- Fixed ticker (pointer) at the top -->
       <div class="ticker"></div>
-      <!-- Inner container that will rotate; all children share the same center -->
       <div class="wheel-rotate" id="wheel">
-        <!-- Outer metallic ring -->
         <div class="outer-ring"></div>
-        <!-- Colored segments (smaller circle to reveal the ring) -->
         <div class="segments"></div>
-          <!-- Now add the 8 boundary lines (spokes): -->
   <div class="segment-line" style="--angle: 0deg;"></div>
   <div class="segment-line" style="--angle: 45deg;"></div>
   <div class="segment-line" style="--angle: 90deg;"></div>
@@ -80,7 +71,6 @@
   <div class="segment-line" style="--angle: 225deg;"></div>
   <div class="segment-line" style="--angle: 270deg;"></div>
   <div class="segment-line" style="--angle: 315deg;"></div>
-        <!-- 8 Pins spaced evenly (using CSS variable for angle) -->
         <div class="pin" style="--pin-angle: 0deg;"></div>
         <div class="pin" style="--pin-angle: 45deg;"></div>
         <div class="pin" style="--pin-angle: 90deg;"></div>
@@ -89,7 +79,6 @@
         <div class="pin" style="--pin-angle: 225deg;"></div>
         <div class="pin" style="--pin-angle: 270deg;"></div>
         <div class="pin" style="--pin-angle: 315deg;"></div>
-        <!-- In your .wheel-rotate or .segments container -->
         <div class="segment-label-container" style="--angle: 22.5deg;">
             <div class="segment-label">500</div>
             <div class="segment-subtext">SPINS</div>
@@ -122,23 +111,20 @@
             <div class="segment-label">50</div>
             <div class="segment-subtext">SPINS</div>
         </div>        
-        <!-- Center circle with WIN text -->
         <div class="center-circle">
           <div class="center-text"></div>
         </div>
       </div>
     </div>
-  <!-- The stand/base element below the wheel -->
     <div class="wheel-stand">
         <div class="stand-top"></div>
       </div>
     </div>
   </div>
-        <!-- Controls & Result -->
         <div class="controls-container">
-          <div class="result" id="resultText"></div>
             <button class="spin-button" id="spinButton">SPIN NOW</button>
             <button class="claim-button" id="claimPrize" style="display: none;">CLAIM NOW</button>
+            <div class="result" id="resultText"></div>
           </div>
       </div>
   <div class="right-column">

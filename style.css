@@ -9,7 +9,7 @@
   font-family: 'Luckiest Guy';
   font-style: normal;
   font-weight: 400;
-  font-display: block; /* Ensures no fallback font is displayed before loading */
+  font-display: block;
   src: url('https://fonts.gstatic.com/s/luckiestguy/v20/_gP_1RrxsjcxVyin9l9n_j2RStR3qDpraXJ5.woff2') format('woff2');
 }
 
@@ -20,17 +20,16 @@
 html, body {
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden !important; /* Forces disabling horizontal scroll */
+  overflow-x: hidden !important;
   position: relative;
 }
 
-/* Body & Container */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow-x: hidden; /* Disable horizontal scrolling */
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   color: #fff;
   margin: 0;
@@ -77,7 +76,6 @@ background-size: cover;
   }
 }
 
-/* Background Layer 1 */
 .bg-animated-gradient {
   position: fixed;
   top: -50%;
@@ -90,7 +88,6 @@ background-size: cover;
   animation: move-diagonal 8s ease-in-out infinite alternate;
 }
 
-/* Background Layer 2 (Rotating Radial) */
 .bg-animated-gradient-2 {
   position: fixed;
   top: 0;
@@ -103,7 +100,6 @@ background-size: cover;
   mix-blend-mode: overlay;
 }
 
-/* Background Layer 3 (Subtle Glow) */
 .bg-animated-gradient::after {
   content: '';
   position: absolute;
@@ -116,7 +112,6 @@ background-size: cover;
   mix-blend-mode: soft-light;
 }
 
-/* Loading Screen Container */
 #loading-screen {
   position: fixed;
   top: 0;
@@ -131,75 +126,65 @@ background-size: cover;
   opacity: 1;
 }
 
-/* Exclude the loading screen from the fade-in effect */
 body.loading :not(#loading-screen) {
-  opacity: 0.5; /* Reduce visibility for all elements except the loader */
+  opacity: 0.5;
   transition: opacity 0.2s ease-in-out;
 }
 
-/* Ensure the loader appears fully visible immediately */
 body.loading #loading-screen {
   opacity: 1 !important;
   transition: none;
 }
 
-/* Exclude these elements from opacity reduction */
 body.loading .bg-animated-gradient,
 body.loading .bg-animated-gradient-2,
 body.loading .line,
 body.loading .loader {
-  opacity: 1 !important; /* Keep fully visible */
+  opacity: 1 !important;
 }
 
-/* Main loader container */
 .loader {
   position: relative;
-  width: 100px; /* Adjust as needed */
+  width: 100px;
   height: 100px;
 }
 
-/* Outer spinner: solid color */
 .outer-spinner {
   width: 100%;
   height: 100%;
-  border: 8px solid #003050;         /* solid color */
-  border-top: 8px solid transparent;  /* creates the gap */
+  border: 8px solid #003050;
+  border-top: 8px solid transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-/* Inner spinner: 50% opacity */
 .inner-spinner {
   position: absolute;
-  top: 25%;  /* centers it within the outer spinner */
+  top: 25%;
   left: 25%;
-  width: 50px;  /* 50% of 100px */
+  width: 50px;
   height: 50px;
-  border: 6px solid rgba(52, 152, 219, 0.5); /* same color, 50% opacity */
+  border: 6px solid rgba(52, 152, 219, 0.5);
   border-top: 6px solid transparent;
   border-radius: 50%;
   animation: spinReverse 1.5s linear infinite;
 }
 
-/* Keyframe for outer spinner (clockwise) */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Keyframe for inner spinner (counter-clockwise) */
 @keyframes spinReverse {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
 }
 
-/* When the loading screen is hidden, restore full opacity with fade effect */
 body:not(.loading) * {
   opacity: 1 !important;
   transition: opacity 0.4s ease-in-out;
 }
 
-/* Optional: Fade-out rule for the loader when hiding */
 #loading-screen.hidden {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
@@ -299,9 +284,9 @@ width: 70%;
 
 .segment-overlay {
 position: absolute;
-top: 5px; /* Adjust vertical position as needed */
+top: 5px;
 left: 50%;
-transform: translateX(-39%); /* Ensures perfect horizontal centering */
+transform: translateX(-39%);
 width: auto;
 height: auto;
 text-align: center;
@@ -325,7 +310,6 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   top: 190px;
 }
 
-/* Wheel container with perspective */
 .wheel-container {
   width: 340px;
   height: 340px;
@@ -334,7 +318,6 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   perspective: 1000px;
 }
 
-/* Ticker: fixed pointer above the wheel */
 .ticker {
   position: absolute;
   top: -20px;
@@ -344,17 +327,15 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   width: 40px;
   height: 35px;
   background: linear-gradient(to bottom, #ff6666, #cc0000);
-  /* Create a triangle using clip-path */
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   border-bottom-left-radius: 50% 50%;
   border-bottom-right-radius: 50% 50%;
   z-index: 10;
 }
 
-/* Ticker tick animation */
 @keyframes tickAnim {
   0% { transform: translateX(-50%) rotate(180deg); }
-  50% { transform: translateX(-50%) rotate(200deg); }  /* slight rotation pivot */
+  50% { transform: translateX(-50%) rotate(200deg); }
   100% { transform: translateX(-50%) rotate(180deg); }
 }
 
@@ -372,11 +353,10 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   background: #fff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  clip-path: none; /* Ensure the dot isn't clipped by parent's clip-path */
+  clip-path: none;
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.75);
 }  
 
-/* Rotating container: all elements share the same center */
 .wheel-rotate {
   width: 340px;
   height: 340px;
@@ -388,7 +368,6 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   cursor: pointer;
 }
 
-/* Outer metallic ring covers entire wheel */
 .outer-ring {
   position: absolute;
   top: 0;
@@ -402,7 +381,6 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   border: 2px solid #ffffff;
 }
 
-/* Colored segments as inner circle (280x280) centered within the ring */
 .segments {
   position: absolute;
   top: 30px;
@@ -420,24 +398,20 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
       #31ab26 270deg 315deg,
       #116709 315deg 360deg
   );
-  /* Add an inner shadow for a subtle 3D effect */
   box-shadow: inset 0 5px 10px rgba(0,0,0,0.5);
   z-index: 2;
   position: relative;
   border: 3px solid #000000;
 }
 
-/* Each spoke line (boundary between segments) */
 .segment-line {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 2px;          /* The spoke’s thickness */
-  height: 140px;       /* How far it extends from the center */
-  background: black;   /* Color of the spoke line */
+  width: 2px;
+  height: 140px;
+  background: black;
   transform-origin: top center; 
-  /* If 0deg should point upward from the center, subtract 90deg.
-     That way, 0deg = up, 90deg = right, 180deg = down, etc. */
   transform: translate(-50%) rotate(calc(var(--angle) - 90deg));
   z-index: 4;
   filter: drop-shadow(-2px 0 4px rgba(0,0,0,0.3)) drop-shadow(2px 0 4px rgba(0,0,0,0.3));
@@ -446,7 +420,7 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
 .segment-line::before {
   content: "";
   position: absolute;
-  top: -10px; /* adjust vertical position as needed */
+  top: -10px;
   left: 100%;
   width: 5px;
   height: 150px;
@@ -460,7 +434,7 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
 .segment-line::after {
   content: "";
   position: absolute;
-  top: -10px; /* adjust vertical position as needed */
+  top: -10px;
   left: 0%;
   width: 5px;
   height: 150px;
@@ -471,7 +445,6 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   z-index: 5;
 }
 
-/* Container for both label and subtext */
 .segment-label-container {
 position: absolute;
 top: 50%;
@@ -483,11 +456,10 @@ transform:
   rotate(90deg); 
 transform-origin: center center;
 z-index: 999;
-text-align: center; /* Ensures both texts are centered */
+text-align: center;
 pointer-events: none;
 }
 
-/* Main text */
 .segment-label {
 font-size: 30px;
 color: #ffffff;
@@ -497,13 +469,12 @@ font-weight: 600;
 white-space: nowrap;
 }
 
-/* Smaller subtext */
 .segment-subtext {
-font-size: 10px;  /* Smaller than the main label */
+font-size: 10px;
 color: #ffffff;
 text-shadow: 0px 0px 1px rgba(0,0,0,0.6);
 font-weight: 400;
-margin-top: 2px; /* Slight spacing below the number */
+margin-top: 2px;
 text-transform: uppercase;
 }
 
@@ -521,7 +492,6 @@ text-transform: uppercase;
   z-index: 3;
 }
 
-/* Center circle with WIN text */
 .center-circle {
   position: absolute;
   top: 50%;
@@ -549,7 +519,7 @@ text-transform: uppercase;
   background: #000000;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  clip-path: none; /* Ensure the dot isn't clipped by parent's clip-path */
+  clip-path: none;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
 } 
 
@@ -560,15 +530,14 @@ text-transform: uppercase;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Overall container for the stand */
 .wheel-stand {
   position: absolute;
-  width: 180px;       /* Adjust to match wheel width or desired look */
-  height: 120px;      /* Overall stand height */
-  left: 50%;          /* Center it below the wheel */
+  width: 180px;
+  height: 120px;
+  left: 50%;
   transform: translateX(-50%);
-  top: calc(50% + 70px); /* Position below the wheel. Adjust as needed. */
-  z-index: -1;         /* Put it behind or in front, depending on your design */
+  top: calc(50% + 70px);
+  z-index: -1;
 }
 
 .stand-top {
@@ -598,7 +567,7 @@ text-transform: uppercase;
   width: 100%;
   max-width: 450px;
   padding: 0 10px 0 10px;
-  gap: 10px;
+  gap: 20px;
   z-index: 20;
 }
 
@@ -606,15 +575,12 @@ text-transform: uppercase;
   text-align: center;
   color: #ffffff;
   font-size: 22px;
-  margin-top: 20px;
-  margin-bottom: 10px;
   min-height: 50px;
   display: none;
   pointer-events: none;
   user-select: none;
 }
 
-/* Spin & Claim Buttons */
 .spin-button, .claim-button {
   padding: 15px 25px;
   font-size: 18px;
@@ -627,8 +593,9 @@ text-transform: uppercase;
   user-select: none;
   text-align: center;
   display: inline-block;
-  width: 180px; /* Adjust width */
-  height: 55px; /* Adjust height */
+  width: 180px;
+  height: 55px;
+  margin-top: 20px;
   border-radius: 50px;
   position: relative;
   box-shadow: 0px 0px 10px #000000, inset 0px 0px 15px #ffffffa8;
@@ -682,46 +649,70 @@ align-items: center;
 
 .line {
 position: absolute;
-width: 150px; /* Adjust length */
-height: 5px; /* Adjust thickness */
-background-color: rgb(255, 254, 211); /* Adjust color */
+width: 150px;
+height: 5px;
+background-color: rgb(255, 254, 211);
 border-radius: 50px;
 box-shadow: 
-  0 0 5px #ffcc00,   /* Inner glow */
-  0 0 10px #ffcc00,  /* Medium glow */
-  0 0 20px #ffcc00,  /* Strong glow */
-  0 0 40px rgba(255, 204, 0, 0.8); /* Outer glow */
+  0 0 5px #ffcc00,
+  0 0 10px #ffcc00,
+  0 0 20px #ffcc00,
+  0 0 40px rgba(255, 204, 0, 0.8);
 }
 
-/* Right Column: Align lines to the left of the column */
 .right-column {
-position: relative; /* Make sure the lines position within this column */
+position: relative;
 }
 
 .right-column .line-1, 
 .right-column .line-2, 
 .right-column .line-3 { 
-left: 0; /* Align to left edge of the column */
+left: 0;
 transform-origin: left;
 }
 
-/* Left Column: Align lines to the right of the column */
 .left-column {
-position: relative; /* Make sure the lines position within this column */
+position: relative;
 }
 
 .left-column .line-1, 
 .left-column .line-2, 
 .left-column .line-3 { 
-right: 0; /* Align to right edge of the column */
+right: 0;
 transform-origin: right;
 }
 
-/* Line positions and angles */
 .right-column .line-1 { top: -100px; transform: rotate(-30deg); }
 .right-column .line-2 { top: 0px; transform: rotate(0deg); }
-.right-column .line-3 { top: 100px; transform: rotate(30deg); } /* 120° */
+.right-column .line-3 { top: 100px; transform: rotate(30deg); }
 
-.left-column .line-1 { top: -100px; transform: rotate(30deg); } /* Horizontal */
-.left-column .line-2 { top: 0px; transform: rotate(0deg); } /* 300° */
-.left-column .line-3 { top: 100px; transform: rotate(-30deg); } /* 240° */
+.left-column .line-1 { top: -100px; transform: rotate(30deg); }
+.left-column .line-2 { top: 0px; transform: rotate(0deg); }
+.left-column .line-3 { top: 100px; transform: rotate(-30deg); }
+
+@keyframes flashText {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.result.flashing {
+  animation: flashText 0.8s ease-in-out 3;
+}
+
+@keyframes buttonFlash {
+  0% { background: #ffffff; }
+  50% { background: none; }
+  100% { background: #ffffff; }
+}
+
+.claim-button.flashing::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  animation: buttonFlash 0.25s ease-in-out 1;
+}
