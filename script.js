@@ -5,6 +5,18 @@ const claimPrize = document.getElementById('claimPrize');
 const resultSound = new Audio('result-sound.wav');
 const spinSound = new Audio('start-sound.wav');
 
+spinSound.preload = "auto"; 
+resultSound.preload = "auto"; 
+
+spinSound.volume = 0.4;
+resultSound.volume = 0.7;
+
+// Required for iOS/Safari: Load sounds on first user interaction
+document.addEventListener('click', () => {
+    spinSound.play().then(() => spinSound.pause()); // Play & Pause to unlock sound on iOS
+    resultSound.play().then(() => resultSound.pause());
+}, { once: true }); // Ensures it only runs once
+
 let isSpinning = false;
 let canSpin = false;
 
@@ -115,9 +127,11 @@ function spinWheel() {
   canSpin = false;
 
   spinSound.currentTime = 0;
-  spinSound.volume = 0.4;
   spinSound.loop = false;
   spinSound.play();
+
+  startTimeSpin = performance.now(); // Ensure accurate timing
+  requestAnimationFrame(animateSpin);
 
   resultText.style.visibility = "none";
   resultText.innerText = "";
@@ -183,9 +197,10 @@ function animateSpin(timestamp) {
     spinButton.style.display = "none";
     claimPrize.style.display = "inline-block";
 
-    resultSound.currentTime = 0;
-  resultSound.volume = 0.7;
-  resultSound.play();
+    setTimeout(() => {
+      resultSound.currentTime = 0;
+      resultSound.play().catch(error => console.warn("Result sound blocked:", error));
+  }, 100);
 
     claimPrize.classList.add("flashing");
     resultText.classList.add("flashing");
