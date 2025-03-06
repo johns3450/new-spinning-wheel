@@ -27,12 +27,11 @@ html, body {
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
   overflow-x: hidden;
   font-family: Arial, sans-serif;
   color: #fff;
-  margin: 0;
+  margin: 25px 0 25px;
   padding: 0;
 background-size: cover;
 }
@@ -205,7 +204,7 @@ body:not(.loading) * {
 
 .header-logo-image {
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 40px;
@@ -223,7 +222,7 @@ body:not(.loading) * {
 
 .header-logo-background {
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 40px;
@@ -233,9 +232,9 @@ body:not(.loading) * {
   z-index: 1;
 }
 
-.header-logo-shadow{
+.header-logo-shadow {
   position: absolute;
-  top: 50px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 30px;
@@ -265,7 +264,7 @@ background-position: center;
 filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
 transform: translateX(-50%);
 z-index: 1;
-top: -350px;
+top: -400px;
 width: 55%;
 }
 
@@ -278,13 +277,13 @@ background-position: center;
 filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
 z-index: 2;
 transform: translate(-40%, -35%);
-top: -5px;
+top: -55px;
 width: 70%;
 }
 
 .segment-overlay {
 position: absolute;
-top: 5px;
+top: -45px;
 left: 50%;
 transform: translateX(-39%);
 width: auto;
@@ -307,7 +306,7 @@ filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
   display: flex;
   justify-content: center;
   height: auto;
-  top: 190px;
+  top: 140px;
 }
 
 .wheel-container {
@@ -560,13 +559,14 @@ text-transform: uppercase;
   display: flex;
   justify-content: center;
   height: auto;
-  top: 540px;
+  top: 490px;
   flex-direction: column;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 450px;
   padding: 0 10px 0 10px;
+  margin: 20px 0 0 0;
   gap: 20px;
   z-index: 20;
 }
@@ -576,6 +576,7 @@ text-transform: uppercase;
   color: #ffffff;
   font-size: 22px;
   min-height: 50px;
+  line-height: 30px;
   display: none;
   pointer-events: none;
   user-select: none;
@@ -595,7 +596,6 @@ text-transform: uppercase;
   display: inline-block;
   width: 180px;
   height: 55px;
-  margin-top: 20px;
   border-radius: 50px;
   position: relative;
   box-shadow: 0px 0px 10px #000000, inset 0px 0px 10px #ffffffa8;
@@ -626,6 +626,7 @@ padding: 20px;
 .left-column, .right-column {
 flex: 1;
 min-width: 150px;
+top: 287px;
 display: block;
 }
 
