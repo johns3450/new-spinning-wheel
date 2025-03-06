@@ -27,7 +27,7 @@ html, body {
 body {
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 50px);
+  min-height: 100vh;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
   color: #fff;
