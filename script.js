@@ -172,7 +172,7 @@ function animateSpin(timestamp) {
   const ease = 1 - Math.pow(1 - progress, 3);
   const angle = startAngle + ease * (targetAngle - startAngle);
   currentAngle = angle;
-  wheel.style.transform = `translate(-50%, -50%) rotateX(15deg) rotate(${angle}deg)`;
+  wheel.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
 
   const tickSpacing = 360 / segments.length;
   let currentTickIndex = Math.floor(currentAngle / tickSpacing);
