@@ -197,7 +197,7 @@ body:not(.loading) * {
     justify-content: center;
     flex-direction: column;
     height: auto;
-    top: 0;
+    top: 25px;
     z-index: 0;
 }
 
@@ -268,24 +268,24 @@ width: 55%;
 }
 
 .segment-shape-2 {
-position: absolute;
-left: 50%;
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
-filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
-z-index: 2;
-transform: translate(-40%, -35%);
-top: -55px;
-width: 70%;
+  position: absolute;
+  left: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+  z-index: 2;
+  transform: translateX(-50%);
+  top: -62.5px;
+  width: 70%;
 }
 
 .segment-overlay {
 position: absolute;
 top: -45px;
 left: 50%;
-transform: translateX(-39%);
-width: auto;
+transform: translateX(-50%);
+width: 325px;
 height: auto;
 text-align: center;
 display: flex;
@@ -558,13 +558,13 @@ text-transform: uppercase;
   display: flex;
   justify-content: center;
   height: auto;
-  top: 500px;
+  top: 525px;
   flex-direction: column;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 450px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 25px 10px;
   margin: 20px 0 0 0;
   gap: 20px;
   z-index: 20;
@@ -619,13 +619,12 @@ width: 100%;
 max-width: 1200px;
 margin: 0 auto;
 gap: 20px;
-padding: 20px;
 }
 
 .left-column, .right-column {
 flex: 1;
 min-width: 150px;
-top: 287px;
+top: 347px;
 display: block;
 }
 
